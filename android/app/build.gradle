@@ -125,6 +125,10 @@ android {
     androidResources {
         ignoreAssetsPattern '!.svn:!.git:!.ds_store:!*.scc:!CVS:!thumbs.db:!picasa.ini:!*~'
     }
+    plugins{
+        id 'com.android.application'
+        id 'com.google.gms.google-services'
+    }
 }
 
 // Apply static values from `gradle.properties` to the `android.packagingOptions`
@@ -149,6 +153,8 @@ android {
 
 dependencies {
     // The version of react-native is set by the React Native Gradle Plugin
+    implementation platform('com.google.firebase:firebase-bom:33.14.0')
+    implementation 'com.google.firebase:firebase-analytics'
     implementation("com.facebook.react:react-android")
 
     def isGifEnabled = (findProperty('expo.gif.enabled') ?: "") == "true";
