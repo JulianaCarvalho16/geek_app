@@ -1,19 +1,14 @@
-const admin = require('../config/firebase');
+const jwt = require('jsonwebtoken');
 
-const verificarToken = async (req, res, next) => {
-    const authHeader = req.headers.authorization?.split('Bearer')[1];
-    if (!authHeader || !authHeader.startsWith('Bearer')){
-        return res.status(401).json({ error: 'token não fornecido'})};
-    };
+module.exports = (req, res, next) => {
+  const token = req.headers.authorization?.split(' ')[1];
+  if (!token) return res.status(401).json({ error: 'Token ausente' });
 
-    const token = authHeader.split(' ')[1];
-    
-    try{
-        const decoded = await admin.auth().verifyIdToken(token);
-        req.uid = decoded.uid;
-        next()
-    } catch {
-        return res.status(401).json({ error: 'Token Invalido'})
-    }
-
-    module.exports = verificarToken;
+  try {
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    req.user = decoded;
+    next();
+  } catch (err) {
+    res.status(403).json({ error: 'Token inválido' });
+  }
+};

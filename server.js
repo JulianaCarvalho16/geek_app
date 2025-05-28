@@ -1,18 +1,23 @@
 const express = require('express');
+const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const cors = require('cors');
-require('./BackEnd/config/db');
 
-const app = express();
+const authRoutes = require('./routes/auth');
+const taskRoutes = require('./routes/task');
+
 dotenv.config();
+const app = express();
 
 app.use(cors());
 app.use(express.json());
 
-const taskRoutes = require('./BackEnd/routes/taskRoures');
-app.use('api', taskRoutes);
+app.use('/api/auth', authRoutes);
+app.use('/api/tasks', taskRoutes);
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-    console.log(`Servidor rodando na porta ${PORT}`);
-});
+mongoose.connect(process.env.MONGO_URI)
+  .then(() => {
+    console.log('MongoDB conectado');
+    app.listen(3000, () => console.log('Servidor rodando na porta 3000'));
+  })
+  .catch(err => console.log(err));
