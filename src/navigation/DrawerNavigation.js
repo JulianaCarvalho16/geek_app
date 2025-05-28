@@ -9,6 +9,7 @@ import ToDo from "../screens/ToDo";
 import InProgress from "../screens/InProgress";
 import Done from "../screens/Done";
 import Login from "../screens/Login";
+import Register from "../screens/Register";
 import Profile from "../screens/Profile";
 import Configu from "../screens/Configu";
 
@@ -55,6 +56,14 @@ export default function DrawerNavigation(){
                options={{
                   drawerIcon: () => <FontAwesome name="user" size={24} color="black" />,
                   drawerLabel: 'Login'
+               }}
+            />
+            <Drawer.Screen
+               name= "Register"
+               component={Register}
+               options={{
+                  drawerIcon: () => <FontAwesome name="user" size={24} color="black" />,
+                  drawerLabel: 'Register'
                }}
             />
             <Drawer.Screen
