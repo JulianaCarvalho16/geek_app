@@ -30,7 +30,7 @@ export default function StackNavigation() {
 }
 
   return (
-    <Stack.Navigator initialRouteName="Splash">
+    <Stack.Navigator initialRouteName="Splash" screenOptions={{ title: '' }}>
     <Stack.Screen name="Splash" component={SplashScreen} />
     <Stack.Screen name="Login" component={Login} />
     <Stack.Screen name= "Home" component={Home} />
