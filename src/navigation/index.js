@@ -1,5 +1,4 @@
-import { DrawerRouter, NavigationContainer} from '@react-navigation/native'
-import DrawerNavigation from './DrawerNavigation'
+import { NavigationContainer} from '@react-navigation/native'
 import StackNavigation from './StarkNavegation'
 
 export default function Routes(){

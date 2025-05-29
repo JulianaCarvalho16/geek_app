@@ -30,10 +30,10 @@ export default function StackNavigation() {
 }
 
   return (
-    <Stack.Navigator initialRouteName="Splash">
+    <Stack.Navigator initialRouteName="Splash" screenOptions={{ headerShown: false }}>
     <Stack.Screen name="Splash" component={SplashScreen} />
     <Stack.Screen name="Login" component={Login} />
-    <Stack.Screen name= "Home" component={Home} />
+    <Stack.Screen name= "Home" component={DrawerNavigation} />
     <Stack.Screen name="Drawer" component={DrawerNavigation} options={{ headerShown: false }} />
     </Stack.Navigator>
 
