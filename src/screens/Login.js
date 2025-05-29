@@ -24,7 +24,7 @@ export default function LoginScreen({ navigation }) {
     };
 
     return (
-        <View style={style.container}>
+        <View style={style.container} screenOptions={{ title: '' }}>
             <Text style={style.title}>{isLogin ? 'Login' : 'Criar Conta'}</Text>
             <TextInput
             placeholder = "Email"
@@ -72,6 +72,6 @@ const style = StyleSheet.create({
     toggle: {
         marginTop: 16,
         textAlign: 'center',
-        color: ''
+        color: '#0938e3'
     },
 });
