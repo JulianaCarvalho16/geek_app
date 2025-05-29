@@ -6,7 +6,15 @@ import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
 } from "firebase/auth";
-import { get } from "mongoose";
+import { 
+  getFirestore,
+  collection,
+  addDoc,
+  getDocs,
+  query,
+  where,
+} from "firebase/firestore";
+import { doc, updateDoc } from "firebase/firestore";
 import { AxiosHeaders } from "axios";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -27,6 +35,8 @@ const firebaseConfig = {
 const appFirebase = initializeApp(firebaseConfig);
 const analytics = getAnalytics(appFirebase);
 const authFirebase = getAuth(appFirebase);
+const db = getFirestore(appFirebase);
+
 const Auth = {
   login: async (email, password) => {
     try {
@@ -56,5 +66,53 @@ const Auth = {
     return authFirebase.currentUser;
   },
 };
+
+const TaskService = {
+  createTask: async (title, description, boardId, userId, date, time) => {
+    try {
+      const taskRef = collection(db, "tasks");
+      await addDoc (taskRef, {
+        title,
+        description,
+        boardId,
+        userId,
+        status: "todo",
+        date,
+        time,
+        createAt: new Date(),
+      })
+    } catch (error) {
+      console.error("Erro ao criar tarefa", error);
+    }
+  },
+
+  getUserTasks: async (userId) => {
+    try {
+      const taskRef = collection(db, "tasks");
+      const q = query(taskRef, where("userId", "==", userId));
+      const querySnapshot = await getDocs(q);
+      const tasks = [];
+      querySnapshot.forEach((doc) => {
+        tasks.push({ id: doc.id, ...doc.date()});        
+      });
+      return tasks;
+    } catch (error) {
+      console.error("Erro ao buscar tarefas", error);
+      return [];
+    }
+  },
+  updateTasksStatus: async(taskId, newStatus) => {
+    try{
+      const taskDoc = doc(db, "tasks", taskId);
+      await updateDoc(taskDoc, {
+        status: newStatus,
+      });
+      console.log("Status de tarefa atualizado com sucesso")
+    } catch (error) {
+      console.error("Erro ao atualizar status de tarefa", error)
+    }
+  }
+};
+
 
 export default Auth;
