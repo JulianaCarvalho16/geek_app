@@ -9,6 +9,7 @@ import ToDo from "../screens/ToDo";
 import InProgress from "../screens/InProgress";
 import Done from "../screens/Done";
 import Profile from "../screens/Profile";
+import criartarefa from "../screens/criartarefa"
 import Configu from "../screens/Configu";
 
 const Drawer = createDrawerNavigator();
@@ -54,6 +55,14 @@ export default function DrawerNavigation(){
                options={{
                   drawerIcon: () => <FontAwesome name="user" size={24} color="black" />,
                   drawerLabel: 'Perfil'
+               }}
+            />
+            <Drawer.Screen
+               name= "criartarefa"
+               component={criartarefa}
+               options={{
+                  drawerIcon: () => <Entypo name="criartarefa" size={24} color="black" />,
+                  drawerLabel: 'Criar tarefas'
                }}
             />
             <Drawer.Screen
