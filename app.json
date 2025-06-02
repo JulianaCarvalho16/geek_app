@@ -1,0 +1,14 @@
+{
+  "expo": {
+    "name": "geek_app",
+    "slug": "geek_app",
+    "version": "1.0.0",
+    "scheme": "geekapp",
+    "web": {
+      "bundler": "metro"
+    },
+    "android": {
+      "package": "com.anonymous.geek_app"
+    }
+  }
+}
