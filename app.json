@@ -4,11 +4,20 @@
     "slug": "geek_app",
     "version": "1.0.0",
     "scheme": "geekapp",
-    "web": {
-      "bundler": "metro"
-    },
+    "userInterfaceStyle": "automatic",
+    "plugins": [
+      [
+        "expo-system-ui",
+        {
+          "edgeToEdgeEnabled": true
+        }
+      ]
+    ],
     "android": {
       "package": "com.anonymous.geek_app"
+    },
+    "web": {
+      "bundler": "metro"
     }
   }
 }

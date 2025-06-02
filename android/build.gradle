@@ -5,6 +5,11 @@ buildscript {
     google()
     mavenCentral()
   }
+  dependencies {
+    classpath('com.android.tools.build:gradle')
+    classpath('com.facebook.react:react-native-gradle-plugin')
+    classpath('org.jetbrains.kotlin:kotlin-gradle-plugin')
+  }
 }
 
 def reactNativeAndroidDir = new File(
@@ -26,10 +31,6 @@ allprojects {
     mavenCentral()
     maven { url 'https://www.jitpack.io' }
   }
-}
-
-plugins {
-  id 'com.google.gms.google-services' version '4.4.2' apply false
 }
 
 apply plugin: "expo-root-project"
