@@ -16,7 +16,6 @@ import Done from "../screens/Done";
 import Profile from "../screens/Profile";
 import criartarefa from "../screens/criartarefa";
 import Configu from "../screens/Configu";
-import Notas from "../screens/Notas"
 import Denotas from "../screens/Denotas";
 
 const Drawer = createDrawerNavigator();
@@ -97,15 +96,6 @@ export default function DrawerNavigation() {
           options={{
             drawerIcon: ({ color }) => <Entypo name="plus" size={24} color={color} />,
             drawerLabel: 'Criar tarefas',
-          }}
-        />
-        
-        <Drawer.Screen
-          name="Notas"
-          component={Notas}
-          options={{
-            drawerIcon: ({ color }) => <Entypo name="plus" size={24} color={color} />,
-            drawerLabel: 'Ver todas as notas',
           }}
         />
         <Drawer.Screen

@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
   },
   botaodeenviar: {
     backgroundColor: '#760264',
-    borderColor: '#FC4D00',
+    borderRadius: 5,
     borderWidth: 3,
     borderRadius: 20,
     marginLeft: 20,
