@@ -1,9 +1,9 @@
 {
   "expo": {
-    "name": "geek_app",
-    "slug": "geek_app",
+    "name": "geek_app1",
+    "slug": "geek_app1",
     "version": "1.0.0",
-    "scheme": "geekapp",
+    "scheme": "geekapp1",
     "userInterfaceStyle": "automatic",
     "plugins": [
       [

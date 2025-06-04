@@ -15,13 +15,13 @@ import {
 import { doc, updateDoc } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBPZZBHtc_fCm3mdyw1BLJDH51z6IJoPoM",
-  authDomain: "gekapp-af106.firebaseapp.com",
-  projectId: "gekapp-af106",
-  storageBucket: "gekapp-af106.firebasestorage.app",
-  messagingSenderId: "340151076360",
-  appId: "1:340151076360:web:f6865292fd204fce37b3bd",
-  measurementId: "G-S9VW0P7XR9",
+  apiKey: "AIzaSyBC14b2uWnpZ1cV9AhQgvga-nfOuWtRchI",
+  authDomain: "geekapp1-3fd31.firebaseapp.com",
+  projectId: "geekapp1-3fd31",
+  storageBucket: "geekapp1-3fd31.firebasestorage.app",
+  messagingSenderId: "396532800568",
+  appId: "1:396532800568:web:8d545b798f74edda3b9acd",
+  measurementId: "G-7KV4H3PGSY",
 };
 
 const appFirebase = initializeApp(firebaseConfig);
