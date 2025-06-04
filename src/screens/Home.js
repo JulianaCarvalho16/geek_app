@@ -1,28 +1,29 @@
 import { StyleSheet, Text, View, ScrollView, TouchableOpacity } from 'react-native';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useCallback } from 'react';
+import { useFocusEffect } from '@react-navigation/native';
 import { ListItem } from '@rneui/themed';
 import Auth from '../services/firebase';
-import CriarTarefa from './criartarefa';
-import Denotas from './Denotas';
 
 export default function Notas(props) {
   const [lista, setLista] = useState([]);
 
-  useEffect(() => {
-    const fetchTasks = async () => {
-      try {
-        const user = await Auth.checkIfLogin();
-        if (user) {
-          const tasks = await Auth.getUserTasks(user.uid);
-          setLista(tasks);
-        }
-      } catch (error) {
-        console.log('Erro ao buscar tarefas:', error);
+  const fetchTasks = async () => {
+    try {
+      const user = await Auth.checkIfLogin();
+      if (user) {
+        const tasks = await Auth.getUserTasks(user.uid);
+        setLista(tasks);
       }
-    };
+    } catch (error) {
+      console.log('Erro ao buscar tarefas:', error);
+    }
+  };
 
-    fetchTasks();
-  }, []);
+  useFocusEffect(
+    useCallback(() => {
+      fetchTasks();
+    }, [])
+  );
 
   return (
     <ScrollView>
@@ -54,7 +55,6 @@ export default function Notas(props) {
     </ScrollView>
   );
 }
-
 const styles = StyleSheet.create({
   Botao: {
     backgroundColor: '#6bf7e9',

@@ -33,7 +33,7 @@ export default function Denotas(props) {
     try {
       await deleteDoc(doc(db, 'tasks', id))
       Alert.alert('Deletada', 'Nota apagada com sucesso')
-      props.navigation.navigate('Notas');
+      props.navigation.navigate('Home');
     } catch (error) {
       Alert.alert('Erro', 'Não foi possível apagar a nota')
     }

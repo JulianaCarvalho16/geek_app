@@ -56,6 +56,14 @@ const Auth = {
   checkIfLogin: async () => {
     return authFirebase.currentUser;
   },
+  logout: async () => {
+    try {
+      await signOut(authFirebase);
+      console.log("Usuário deslogado com sucesso");
+    } catch (error) {
+      console.error("Erro ao deslogar", error);
+    }
+  },
   createTask: async (title, description, boardId, userId, date, time) => {
     try {
       const taskRef = collection(db, "tasks");
