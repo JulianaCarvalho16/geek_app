@@ -1,19 +1,19 @@
 import React, { useEffect } from 'react';
-import { View, Text, ActivityIndicator, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, ActivityIndicator } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-export default function Splash() {
+export default function SplashScreen() {
   const navigation = useNavigation();
 
   useEffect(() => {
     setTimeout(() => {
-      navigation.replace('Login'); 
+      navigation.replace('Login');
     }, 2000);
   }, []);
 
   return (
     <View style={styles.container}>
-      <Text>Bem-vindo ao App!</Text>
+      <Text style={styles.title}>Bem-vindo ao App!</Text>
       <ActivityIndicator size="large" color="#0000ff" />
     </View>
   );

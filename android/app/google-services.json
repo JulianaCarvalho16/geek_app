@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "340151076360",
+    "project_id": "gekapp-af106",
+    "storage_bucket": "gekapp-af106.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:340151076360:android:fb76418e10a25f5237b3bd",
+        "android_client_info": {
+          "package_name": "com.geek.geek_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDxC88eUz_ZCAdXiW-oa9l0XHlcrKfZtTc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

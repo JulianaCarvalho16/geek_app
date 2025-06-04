@@ -1,20 +1,11 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import Splash from '../screens/SplashScreen';
-import Home from '../screens/Home';
-import Login from '../screens/Login';
+import StackNavigation from './StarkNavegation';
 
-const Stack = createNativeStackNavigator();
-
-export default function Navigation() {
+export default function Routes() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Splash">
-        <Stack.Screen name="Splash" component={Splash} />
-        <Stack.Screen name="Home" component={Home} />
-        <Stack.Screen name="Login" component={Login} />
-      </Stack.Navigator>
+     <StackNavigation/>
     </NavigationContainer>
   );
 }

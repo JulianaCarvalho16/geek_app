@@ -32,7 +32,6 @@ export default function StackNavigation() {
     <Stack.Screen name="Splash" component={SplashScreen} />
     <Stack.Screen name="Login" component={Login} />
     <Stack.Screen name= "Home" component={DrawerNavigation} />
-    <Stack.Screen name="Drawer" component={DrawerNavigation} options={{ headerShown: false }} />
     </Stack.Navigator>
 
   );

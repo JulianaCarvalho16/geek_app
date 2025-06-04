@@ -1,9 +1,11 @@
-import { StyleSheet, Text, View, ScrollView, TouchableOpacity, Platform } from 'react-native';
+import { StyleSheet, Text, View, ScrollView, TouchableOpacity } from 'react-native';
 import React, { useState, useEffect } from 'react';
 import { ListItem } from '@rneui/themed';
 import Auth from '../services/firebase';
+import CriarTarefa from './criartarefa';
+import Denotas from './Denotas';
 
-export default function Home(props) {
+export default function Notas(props) {
   const [lista, setLista] = useState([]);
 
   useEffect(() => {
@@ -60,42 +62,49 @@ const styles = StyleSheet.create({
     borderWidth: 5,
     marginLeft: 0,
     justifyContent: 'center',
+    marginRight: 40,
     alignItems: 'center',
     marginTop: 0,
   },
- textodobotao: {
-  textAlign: 'center',
-  paddingVertical: 10,
-  paddingHorizontal: 20,
-  color: 'white',
-  fontSize: 16,
-},
+  textodobotao: {
+    textAlign: 'right',
+    padding: 50,
+    color: 'white',
+    fontSize: 16,
+  },
+  botaodeenviar: {
+    backgroundColor: '#760264',
+    borderColor: 'FC4D00',
+    borderWidth: 3,
+    borderRadius: 20,
+    marginLeft: 20,
+    marginRight: 20,
+    marginTop: 20,
+  },
+  textodobotaoenviar: {
+    textAlign: 'center',
+    padding: 10,
+    color: 'white',
+    fontSize: 16,
+  },
   barra: {
     margin: 20,
     backgroundColor: 'white',
     borderRadius: 20,
     width: '90%',
     padding: 20,
-    ...Platform.select({
-      ios: {
-        shadowColor: '#000',
-        shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.25,
-        shadowRadius: 3.84,
-      },
-      android: {
-        elevation: 5,
-      },
-      web: {
-        shadowColor: undefined,
-        shadowOffset: undefined,
-        shadowOpacity: undefined,
-        shadowRadius: undefined,
-        boxShadow: '0px 2px 4px rgba(0,0,0,0.25)',
-      },
-    }),
-  },
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5,  },
   title: {
+    fontWeight: 'bold',
+  },
+  date: {
     fontWeight: 'bold',
   },
 });

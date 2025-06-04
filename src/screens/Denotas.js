@@ -33,7 +33,7 @@ export default function Denotas(props) {
     try {
       await deleteDoc(doc(db, 'tasks', id))
       Alert.alert('Deletada', 'Nota apagada com sucesso')
-      props.navigation.navigate('Home');
+      props.navigation.navigate('Notas');
     } catch (error) {
       Alert.alert('Erro', 'Não foi possível apagar a nota')
     }
@@ -70,6 +70,10 @@ const styles = StyleSheet.create({
     fontSize: 16
   },
   botaodeenviar: {
+    backgroundColor: '#760264',
+    borderRadius: 5,
+    borderWidth: 3,
+    borderRadius: 20,
     backgroundColor: '#6bf7e9',
     borderRadius: 2,
     borderWidth: 1,
@@ -80,7 +84,7 @@ const styles = StyleSheet.create({
   textodobotaoenviar: {
     textAlign: 'center',
     padding: 10,
-    color: '#000',
+    color: 'white',
     fontSize: 16
   },
   barre: {
@@ -89,19 +93,13 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     width: '90%',
     padding: 20,
-    ...Platform.select({
-      ios: {
-        shadowColor: '#000',
-        shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.25,
-        shadowRadius: 3.84,
-      },
-      android: {
-        elevation: 5,
-      },
-      web: {
-        boxShadow: '0px 2px 4px rgba(0,0,0,0.25)',
-      },
-    }),
-  },
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5
+  }
 });

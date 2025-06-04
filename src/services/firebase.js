@@ -64,7 +64,7 @@ const Auth = {
         description,
         boardId,
         userId,
-        status: "ToDo",
+        status: "todo",
         date,
         time,
         createAt: new Date(),

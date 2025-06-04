@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import { Text, StyleSheet, View, TextInput, TouchableOpacity, Alert } from 'react-native';
 import Auth from '../services/firebase';
-import { useNavigation } from '@react-navigation/native';
+
 
 export default function CriarTarefa() {
-  const navigation = useNavigation();
   const [estado, setEstado] = useState({
     title: '',
     description: '',
@@ -12,15 +11,15 @@ export default function CriarTarefa() {
     time: ''
   });
 
-  const handleInputChange = (value, name) => {
+  const textomudado = (value, name) => {
     setEstado({ ...estado, [name]: value });
   };
 
-  const handleSaveNote = async () => {
+  const notesave = async () => {
   if (estado.title === '' || estado.description === '') {
     Alert.alert('Campo requerido está vazio');
     return;
-  }
+  };
 
   const user = await Auth.checkIfLogin();
   if (!user) {
@@ -46,13 +45,13 @@ export default function CriarTarefa() {
     <View style={styles.containerpai}>
       <View style={styles.barra}>
         <View style={styles.container}>
-          <TextInput placeholder='Coloque o Titulo' style={styles.textocolocado} value={estado.title} onChangeText={(value) => handleInputChange(value, 'title')} />
-          <TextInput placeholder='Sobre' multiline style={styles.textocolocado} value={estado.description} onChangeText={(value) => handleInputChange(value, 'description')} />
+        <TextInput placeholder='Coloque o Titulo' style={styles.textocolocado} value={estado.title} onChangeText={(value) => textomudado(value, 'title')} />Add commentMore actions
+          <TextInput placeholder='Sobre' multiline style={styles.textocolocado} value={estado.description} onChangeText={(value) => textomudado(value, 'description')} />
           <View style={styles.colocardata}>
-            <TextInput placeholder="Data (ex: 09/05/2023)" style={styles.Datatexto} value={estado.date} onChangeText={(value) => handleInputChange(value, 'date')} />
-            <TextInput placeholder="Hora (ex: 18:30)" style={styles.Datatexto} value={estado.time} onChangeText={(value) => handleInputChange(value, 'time')} />
+          <TextInput placeholder="09/05/2023" style={styles.Datatexto} value={estado.date} onChangeText={(value) => textomudado(value, 'date')} />Add commentMore actions
+            <TextInput placeholder="Hora:6:30" style={styles.Datatexto} value={estado.time} onChangeText={(value) => textomudado(value, 'time')} />
           </View>
-          <TouchableOpacity style={styles.botaodeenviar} onPress={handleSaveNote}>
+          <TouchableOpacity style={styles.botaodeenviar} onPress={notesave}>
             <Text style={styles.textodobotaoenviar}>Salvar nota</Text>
           </TouchableOpacity>
         </View>
@@ -79,7 +78,7 @@ const styles = StyleSheet.create({
   container: { 
     padding: 20,
   },
-  handleInputChange: { 
+  textocolocado:  { 
     borderColor: 'slategray', 
     borderWidth: 1, 
     padding: 8, 
