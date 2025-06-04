@@ -2,7 +2,6 @@ import { createDrawerNavigator } from "@react-navigation/drawer";
 import { useEffect } from 'react';
 import { loadTheme } from '../components/themeStorage';
 import { useColorScheme } from 'nativewind';
-import { NavigationContainer, DefaultTheme, DarkTheme } from '@react-navigation/native';
 
 import { Entypo } from "@expo/vector-icons";
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';

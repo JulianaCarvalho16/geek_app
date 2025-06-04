@@ -2,12 +2,14 @@ import React, { useState, useEffect } from 'react'
 import { Text, StyleSheet, View, TouchableOpacity, Alert } from 'react-native'
 import { getFirestore, doc, getDoc, deleteDoc } from 'firebase/firestore'
 import { getAuth } from 'firebase/auth'
+import { useNavigation } from '@react-navigation/native';
 
 export default function Denotas(props) {
   const [nota, setNota] = useState(null)
   const db = getFirestore()
   const auth = getAuth()
   const user = auth.currentUser
+  const navigation = useNavigation();
 
   const pegarnota = async (id) => {
     try {
@@ -31,7 +33,7 @@ export default function Denotas(props) {
     try {
       await deleteDoc(doc(db, 'tasks', id))
       Alert.alert('Deletada', 'Nota apagada com sucesso')
-      props.navigation.navigate('Notas')
+      props.navigation.navigate('Home');
     } catch (error) {
       Alert.alert('Erro', 'Não foi possível apagar a nota')
     }
@@ -68,10 +70,9 @@ const styles = StyleSheet.create({
     fontSize: 16
   },
   botaodeenviar: {
-    backgroundColor: '#760264',
-    borderRadius: 5,
-    borderWidth: 3,
-    borderRadius: 20,
+    backgroundColor: '#6bf7e9',
+    borderRadius: 2,
+    borderWidth: 1,
     marginLeft: 20,
     marginRight: 20,
     marginTop: 20
@@ -79,7 +80,7 @@ const styles = StyleSheet.create({
   textodobotaoenviar: {
     textAlign: 'center',
     padding: 10,
-    color: 'white',
+    color: '#000',
     fontSize: 16
   },
   barre: {
@@ -88,13 +89,19 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     width: '90%',
     padding: 20,
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 2
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 4,
-    elevation: 5
-  }
-})
+    ...Platform.select({
+      ios: {
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+      },
+      android: {
+        elevation: 5,
+      },
+      web: {
+        boxShadow: '0px 2px 4px rgba(0,0,0,0.25)',
+      },
+    }),
+  },
+});

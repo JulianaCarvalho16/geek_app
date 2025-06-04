@@ -1,4 +1,3 @@
-// Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import {
   getAuth,
@@ -14,11 +13,7 @@ import {
   where,
 } from "firebase/firestore";
 import { doc, updateDoc } from "firebase/firestore";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
   apiKey: "AIzaSyBPZZBHtc_fCm3mdyw1BLJDH51z6IJoPoM",
   authDomain: "gekapp-af106.firebaseapp.com",
@@ -29,7 +24,6 @@ const firebaseConfig = {
   measurementId: "G-S9VW0P7XR9",
 };
 
-// Initialize Firebase
 const appFirebase = initializeApp(firebaseConfig);
 const authFirebase = getAuth(appFirebase);
 const db = getFirestore(appFirebase);
@@ -70,7 +64,7 @@ const Auth = {
         description,
         boardId,
         userId,
-        status: "todo",
+        status: "ToDo",
         date,
         time,
         createAt: new Date(),
@@ -95,7 +89,6 @@ const Auth = {
     return [];
   }
 },
-
   updateTasksStatus: async(taskId, newStatus) => {
     try{
       const taskDoc = doc(db, "tasks", taskId);

@@ -35,4 +35,5 @@ yarn-error.*
 # typescript
 *.tsbuildinfo
 
-*serviceAccountKey.json
+*./android
+*./ios

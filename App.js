@@ -1,8 +1,7 @@
-import Routes from "./src/navigation";
-import "./src/components/global.css"; // certifique-se de que o caminho está certo
+import React from 'react';
+import Navigation from './src/navigation';
 
 export default function App() {
-  return (
-      <Routes />
-  );
+  return <Navigation />;
 }
+

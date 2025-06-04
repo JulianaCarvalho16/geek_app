@@ -1,13 +1,14 @@
-// src/screens/Profile.js
 import React from 'react';
 import { View, Text, Button } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useColorScheme } from 'nativewind';
+import Auth from '../services/firebase';
 
 export default function Profile({ navigation }) {
   const { colorScheme } = useColorScheme();
 
   const handleLogout = async () => {
+     await Auth.logout(); 
     await AsyncStorage.removeItem('token');
     navigation.replace('Login');
   };
